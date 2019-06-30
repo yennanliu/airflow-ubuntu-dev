@@ -9,7 +9,7 @@
     },
     "AIRFLOW_HOME": {
       "description": "Where all the information for airflow lives",
-      "value": "/app"
+      "value": "/"
     },
     "AIRFLOW_SECRET_KEY": {
       "description": "A secret key to verify the integrity of signed cookies",
@@ -17,7 +17,7 @@
     },
     "PYTHONPATH": {
       "description": "Path for python",
-      "value": "/app"
+      "value": "/"
     },
     "AIRFLOW_FERNET_KEY": {
       "description": "Fernet key should be generated as: python -c \"from cryptography.fernet import Fernet; print Fernet.generate_key()\"",
