@@ -1,5 +1,7 @@
 # airflow-heroku-dev 
-> Demo how to deploy Airflow to Heroku cloud 
+> Demo how to deploy Airflow to Heroku cloud, for more data infra and ETL development information, please visit 
+[Data infra delopment](https://github.com/yennanliu/data_infra_repo)
+[XJob (Airflow ETL delopment)](https://github.com/yennanliu/XJob)
 
 [![Build Status](https://travis-ci.org/yennanliu/Xjob.svg?branch=master)](https://travis-ci.org/yennanliu/airflow-heroku-dev)
 [![PRs](https://img.shields.io/badge/PRs-welcome-6574cd.svg)](https://github.com/yennanliu/airflow-heroku-dev/pulls)
