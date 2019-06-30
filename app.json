@@ -21,7 +21,7 @@
     },
     "AIRFLOW_FERNET_KEY": {
       "description": "Fernet key should be generated as: python -c \"from cryptography.fernet import Fernet; print Fernet.generate_key()\"",
-      "value": "vT62X4_DgOXH0UIt2nwU2W5ty3jd0zGlTtv3eM_W9MM"
+      "value": "UZVLPCZL514XMWNpFh30vW57y1h3Q6STkGCGxd2qF4Y="
     },
     "AIRFLOW__CORE__SQL_ALCHEMY_CONN": {
       "description": "url connect to airflow core backend DB",
