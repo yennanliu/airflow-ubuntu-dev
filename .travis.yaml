@@ -1,21 +1,8 @@
 sudo: required
 
-services:
-  - docker
-
 branches:
   only:
   - master
-
-script:
-  - echo ' ----------------- STEP 1) BUILD DOCKER IMAGE ----------------- '
-  - echo REGISTRY_USER = $REGISTRY_USER && echo REGISTRY_PASS = $REGISTRY_PASS
-  - echo '*** to be finished *** '
-
-before_deploy:
-  - echo ' ----------------- STEP 2) DOCKER PUSH ----------------- '
-  - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin && echo "docker login OK" || echo "docker login failed"
-  - echo '*** to be finished *** '
 
 deploy:
   provider: heroku
