@@ -43,7 +43,7 @@ $ heroku config -a airflow-heroku
 $ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__SQL_ALCHEMY_CONN=<replace_with_your_postgre_DB_url>
 $ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__LOAD_EXAMPLES=False
 # get the via AIRFLOW_FERNET_KEY 
-$ python -c \"from cryptography.fernet import Fernet; print (Fernet.generate_key())\"
+$ python -c "from cryptography.fernet import Fernet; print (Fernet.generate_key())"
 $ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__FERNET_KEY=<your_FERNET_KEY>
 $ heroku config:set -a airflow-heroku AIRFLOW__WEBSERVER__AUTHENTICATE=True
 $ heroku config:set  -a airflow-heroku AIRFLOW__WEBSERVER__AUTH_BACKEND=airflow.contrib.auth.backends.password_auth
