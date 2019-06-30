@@ -1,3 +1,17 @@
+# airflow-heroku-dev 
+> Demo how to deploy Airflow to Heroku cloud 
+
+[![Build Status](https://travis-ci.org/yennanliu/Xjob.svg?branch=master)](https://travis-ci.org/yennanliu/airflow-heroku-dev)
+[![PRs](https://img.shields.io/badge/PRs-welcome-6574cd.svg)](https://github.com/yennanliu/airflow-heroku-dev/pulls)
+
+### Deploy to Heroku 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/yennanliu/airflow-heroku-dev)
+
+### DEMO 
+[DEMO](http://airflow-heroku.herokuapp.com/)
+- userid : `user`
+- password : `123`
+
 ### Quick start 
 ```bash
 # clone repo, install for local 
