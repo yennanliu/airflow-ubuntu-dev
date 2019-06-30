@@ -24,6 +24,8 @@
 ```
 
 ### Quick start 
+<details>
+<summary>Quick-Start</summary>
 ```bash
 # clone the repo
 $ cd && git https://github.com/yennanliu/airflow-heroku-dev.git
@@ -35,7 +37,7 @@ $ heroku addons:create heroku-postgresql:dev -a airflow-heroku
 # show heroku config 
 $ heroku config -a airflow-heroku
 # heroku airflow config 
-$ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__SQL_ALCHEMY_CONN=<replace_with your_postgre_DB_url>
+$ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__SQL_ALCHEMY_CONN=<replace_with_your_postgre_DB_url>
 $ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__LOAD_EXAMPLES=False
 # get the via AIRFLOW_FERNET_KEY 
 $ python -c \"from cryptography.fernet import Fernet; print (Fernet.generate_key())\"
@@ -53,6 +55,7 @@ $ heroku logs --tail
 # if everything works fine, should be able to access your app via command below
 $ heroku open 
 ```
+</details>
 
 ### Todo 
 - dockerize the project 
