@@ -1,8 +1,19 @@
 sudo: required
 
+services:
+  - docker
+
 branches:
   only:
   - master
+
+script:
+  - echo ' ----------------- STEP 1) BUILD DOCKER IMAGE ----------------- '
+  - echo '*** to be finished *** '
+
+before_deploy:
+  - echo ' ----------------- STEP 2) DOCKER PUSH ----------------- '
+  - echo '*** to be finished *** '
 
 deploy:
   provider: heroku
