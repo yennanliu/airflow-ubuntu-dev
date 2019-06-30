@@ -7,6 +7,8 @@ $ pip install -r requirements.txt
 # heroku setting 
 $ heroku create airflow-heroku 
 $ heroku addons:create heroku-postgresql:dev -a airflow-heroku
+# show heroku config 
+$ heroku config
 # heroku airflow config 
 $ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgres://euxymnbpblbyup:01c18052cfeb518e2de72068fb5669b3b59675c21b417fb29f5db803c7ba3b96@ec2-50-16-197-244.compute-1.amazonaws.com:5432/dc10c3a9bqtplp 
 $ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__LOAD_EXAMPLES=False
