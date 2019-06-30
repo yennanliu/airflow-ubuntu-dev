@@ -8,41 +8,59 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/yennanliu/airflow-heroku-dev)
 
 ### DEMO 
-[DEMO](http://airflow-heroku.herokuapp.com/)
-- userid : `user`
-- password : `123`
+[Airflow Heroku demo](http://airflow-heroku.herokuapp.com/)
+- userid : `user` |  password : `123`
+
+
+### File structure 
+```bash
+# ├── Procfile        : define the initial operations when Heroku app built and deployed 
+# ├── Procfile_dev
+# ├── README.md
+# ├── app.json         : define how to deploy to Heroku as app 
+# ├── dags             : Dags define how does airflow run process  
+# ├── init_env.sh      : init script for DB (maybe not necessary, need to check)
+# └── requirements.txt : install needed libraries for airflow 
+```
 
 ### Quick start 
 ```bash
-# clone repo, install for local 
-$ cd && git clone https://github.com/yennanliu/data_infra_repo.git
-$ cd && cd data_infra_repo/superset_infra/posgre_heroku_deploy 
-$ pip install -r requirements.txt 
-# heroku setting 
+# clone the repo
+$ cd && git https://github.com/yennanliu/airflow-heroku-dev.git
+$ cd && cd airflow-heroku-dev 
+# create heroku project  
 $ heroku create airflow-heroku 
+# set up postgresql as airflow backend 
 $ heroku addons:create heroku-postgresql:dev -a airflow-heroku
 # show heroku config 
 $ heroku config -a airflow-heroku
 # heroku airflow config 
-$ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgres://bmzlfnumagwnfl:81c3f6d09dcc9e3f5a0a36aa83e6fbc432e2c3810d6e349e4cb41ef997501901@ec2-50-19-221-38.compute-1.amazonaws.com:5432/d12rb6i3rphsph 
+$ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__SQL_ALCHEMY_CONN=<replace_with your_postgre_DB_url>
 $ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__LOAD_EXAMPLES=False
-$ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__FERNET_KEY=pndiNQ25jhjnzWr1zanek85Uqr1J38zQcJXUl7H7hNw=
+# get the via AIRFLOW_FERNET_KEY 
+$ python -c \"from cryptography.fernet import Fernet; print (Fernet.generate_key())\"
+$ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__FERNET_KEY=<your_FERNET_KEY>
 $ heroku config:set -a airflow-heroku AIRFLOW__WEBSERVER__AUTHENTICATE=True
 $ heroku config:set  -a airflow-heroku AIRFLOW__WEBSERVER__AUTH_BACKEND=airflow.contrib.auth.backends.password_auth
-# get AIRFLOW_FERNET_KEY 
-$ python -c \"from cryptography.fernet import Fernet; print (Fernet.generate_key())\"
+# update to git
+$ git add . && git commit -m 'code update for heroku deployment'
 # add remote heroku git 
 $ heroku git:remote -a airflow-heroku
+# deploy to heroku 
 $ git push heroku master 
-# push to heroku
-$ git push heroku master
 # track deploy log 
 $ heroku logs --tail
+# if everything works fine, should be able to access your app via command below
+$ heroku open 
 ```
+
+### Todo 
+- dockerize the project 
+- unittest/integration test 
+- better Backend DB configuration 
+
 ### Ref 
 - Deploy airflow to Heroku
 	- https://medium.com/@damesavram/running-airflow-on-heroku-ed1d28f8013d
 	- https://github.com/leandroloi/heroku-airflow
-
-
 	
