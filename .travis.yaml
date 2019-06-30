@@ -1,0 +1,27 @@
+sudo: required
+
+services:
+  - docker
+
+branches:
+  only:
+  - master
+
+script:
+  - echo ' ----------------- STEP 1) BUILD DOCKER IMAGE ----------------- '
+  - echo REGISTRY_USER = $REGISTRY_USER && echo REGISTRY_PASS = $REGISTRY_PASS
+  - echo '*** to be finished *** '
+
+before_deploy:
+  - echo ' ----------------- STEP 2) DOCKER PUSH ----------------- '
+  - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin && echo "docker login OK" || echo "docker login failed"
+  - echo '*** to be finished *** '
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "nT/x5M0Ki5Za3/GCtdsHh8ZHFZwVGi+C6mcMrpIsnbwCdat65ZU0o+kkVMq5rY/eC6kuB7dHib/Avyv347GFFSRzd/c0r+Hx3xVFam/Weov79dZLhxUarw/khBfTEHZlJO9noq7vxslreMgVXlJcJNwgQSVD5naPoqPxMwecUn0DJUlCPvqhWxcmqhHE5RLpsb18pr7wCovtMj+RGJ4uNJNF7pinUF2aFM0wpDn7accEj3waMHFiL4WFhXbGCPccPXhoJ9Teo06Pjubt715F+YTAYM+3bkebQxmBZTSaH77M90oy85u/nMCHbFpw/hagodaEHO38VmWLLP9qz9wpfDoF6Fha6W7PZX8Mq42HfvCe+semOPK8wAnfLpLkJugUffW0WPOe+PS/zZ3PrenodJJjNJz+it0yitb/ffO/fvMNQq9aaVojEYxXI9S5noX4LrplUS8COznJazW2RO7Xr1vCU2B6uH5PQiFg5/L7xGbyFLSxIGq4V+sy8o1xVEkfvATsiGwrv1YC+WPjo3xjC6DYmQuyVO8eHkK4J41l7kcWrC1AzLPQe4hxap1QlFxDhg73lwh+YWVG6dn4K5ZEyFvPOUjLDCPmrk4iKHgtXQzFxdTmVB17NZiulKXY0nje5Z+3CHw4D7mbT9Nqmen/TlKJsCPdai2DJJ+QBoaeI40="
+  run: "echo '----------------- STEP 3) DEPLOY TO HEROKU -----------------'"
+  app: airflow-heroku
+  on:
+    repo: yennanliu/airflow-heroku-dev
