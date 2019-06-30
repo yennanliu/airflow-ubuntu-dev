@@ -15,7 +15,12 @@ $ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__LOAD_EXAMPLES=False
 $ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__FERNET_KEY=pndiNQ25jhjnzWr1zanek85Uqr1J38zQcJXUl7H7hNw=
 $ heroku config:set -a airflow-heroku AIRFLOW__WEBSERVER__AUTHENTICATE=True
 $ heroku config:set  -a airflow-heroku AIRFLOW__WEBSERVER__AUTH_BACKEND=airflow.contrib.auth.backends.password_auth
-
+# get AIRFLOW_FERNET_KEY 
+$ python -c \"from cryptography.fernet import Fernet; print (Fernet.generate_key())\"
+# push to heroku
+$ git push heroku master
+# track deploy log 
+$ heroku logs --tail
 ```
 ### Ref 
 - Deploy airflow to Heroku
