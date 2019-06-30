@@ -25,7 +25,7 @@
     },
     "AIRFLOW__CORE__SQL_ALCHEMY_CONN": {
       "description": "url connect to airflow core backend DB",
-      "value": "postgres://chvsqfzzvtupkz:bcf487a8cbe149c2a37860de504f4a7dec6e106cfd176e3420d2bf218585a5c5@ec2-50-19-221-38.compute-1.amazonaws.com:5432/ddm8gbu8htek58"
+      "value": "postgres://bmzlfnumagwnfl:81c3f6d09dcc9e3f5a0a36aa83e6fbc432e2c3810d6e349e4cb41ef997501901@ec2-50-19-221-38.compute-1.amazonaws.com:5432/d12rb6i3rphsph"
     }
   },
   "scripts": {

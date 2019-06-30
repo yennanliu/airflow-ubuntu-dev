@@ -1,3 +1,1 @@
-web: airflow webserver -p $PORT 
-worker: airflow worker 
-scheduler: airflow scheduler
+web: airflow initdb
