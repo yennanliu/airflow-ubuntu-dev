@@ -54,7 +54,7 @@ $ heroku git:remote -a airflow-heroku
 # deploy to heroku 
 $ git push heroku master 
 # track deploy log 
-$ heroku logs --tail
+$ heroku logs --tail -a airflow-heroku
 # if everything works fine, should be able to access your app via command below
 $ heroku open 
 ```
