@@ -26,6 +26,7 @@
 ### Quick start 
 <details>
 <summary>Quick-Start</summary>
+
 ```bash
 # clone the repo
 $ cd && git https://github.com/yennanliu/airflow-heroku-dev.git
