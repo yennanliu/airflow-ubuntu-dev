@@ -9,7 +9,7 @@
     },
     "AIRFLOW_HOME": {
       "description": "Where all the information for airflow lives",
-      "value": "/"
+      "value": "/app"
     },
     "AIRFLOW_SECRET_KEY": {
       "description": "A secret key to verify the integrity of signed cookies",
@@ -17,11 +17,15 @@
     },
     "PYTHONPATH": {
       "description": "Path for python",
-      "value": "/"
+      "value": "/app"
     },
     "AIRFLOW_FERNET_KEY": {
       "description": "Fernet key should be generated as: python -c \"from cryptography.fernet import Fernet; print Fernet.generate_key()\"",
       "value": "vT62X4_DgOXH0UIt2nwU2W5ty3jd0zGlTtv3eM_W9MM"
+    },
+    "AIRFLOW__CORE__SQL_ALCHEMY_CONN": {
+      "description": "url connect to airflow core backend DB",
+      "value": "postgres://chvsqfzzvtupkz:bcf487a8cbe149c2a37860de504f4a7dec6e106cfd176e3420d2bf218585a5c5@ec2-50-19-221-38.compute-1.amazonaws.com:5432/ddm8gbu8htek58"
     }
   },
   "scripts": {
@@ -29,7 +33,6 @@
   },
   "addons": [
     "heroku-postgresql",
-    "heroku-redis",
     "mailgun:starter"
   ]
 }
