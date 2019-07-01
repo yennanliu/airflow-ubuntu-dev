@@ -9,7 +9,8 @@ branches:
 
 script:
   - echo ' ----------------- STEP 1) BUILD DOCKER IMAGE ----------------- '
-  - echo '*** to be finished *** '
+  - echo 'docker build . -t airflow-heroku-env'
+  - echo 'docker ps -a'
 
 before_deploy:
   - echo ' ----------------- STEP 2) DOCKER PUSH ----------------- '
