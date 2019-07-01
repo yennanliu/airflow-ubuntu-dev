@@ -58,10 +58,10 @@ $ cd && cd airflow-heroku-dev
 # launch dev python env 
 $ source activate <your_dev_env_name>
 # install airflow packages and export it the requirements.txt
-$ pip install "apache-airflow[postgres, password]" && pip freeze > requirements.txt
-# create heroku project  
+$ pip install "apache-airflow[postgres, password]" && pip freeze list > requirements.txt
+# create heroku project (set airflow-heroku as project name)
 $ heroku create airflow-heroku 
-# set up postgresql as airflow backend 
+# set up postgresql as airflow backend (if not work, can via Heroku console too)
 $ heroku addons:create heroku-postgresql:dev -a airflow-heroku
 # show heroku config (check if DB url shown as expected)
 $ heroku config -a airflow-heroku
@@ -73,15 +73,15 @@ $ python -c "from cryptography.fernet import Fernet; print (Fernet.generate_key(
 $ heroku config:set  -a airflow-heroku  AIRFLOW__CORE__FERNET_KEY=<your_FERNET_KEY>
 $ heroku config:set -a airflow-heroku AIRFLOW__WEBSERVER__AUTHENTICATE=True
 $ heroku config:set  -a airflow-heroku AIRFLOW__WEBSERVER__AUTH_BACKEND=airflow.contrib.auth.backends.password_auth
-# update to git
-$ git add . && git commit -m 'code update for heroku deployment'
-# add remote heroku git 
+# git update and git push 
+$ git add . && git commit -m 'update for heroku deploy' && git push origin 
+# set up  remote heroku git 
 $ heroku git:remote -a airflow-heroku
-# deploy to heroku 
+# heroku deploy  
 $ git push heroku master 
 # track deploy log 
 $ heroku logs --tail -a airflow-heroku
-# if everything works fine, should be able to access your app via command below
+# access the deployed Heroku app if everything above works fine 
 $ heroku open 
 ```
 </details>
