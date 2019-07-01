@@ -1,5 +1,7 @@
 # airflow-heroku-dev 
-> Demo how to deploy Airflow to Heroku cloud, for more data infra and ETL development information, please visit below ref: 
+
+> Demo how to `deploy an Airflow app to Heroku cloud`. The main idea is : start from local airflow server running, python packages installation, DB configuration (connect to Airflow), integrate with Tavis CI, make the processes all integrated and automative : testing(dev), docker push (dev), and airflow Heroku deployment (only if all checks passed). For more data infra/ETL development ideas, please visit :
+
 * Daas (Data as a service) repo :  [Data infra build](https://github.com/yennanliu/data_infra_repo) -> [ETL build](https://github.com/yennanliu/XJob) -> [DS application demo](https://github.com/yennanliu/analysis)
 
 [![Build Status](https://travis-ci.org/yennanliu/Xjob.svg?branch=master)](https://travis-ci.org/yennanliu/airflow-heroku-dev)
