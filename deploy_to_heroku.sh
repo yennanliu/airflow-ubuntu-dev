@@ -3,7 +3,10 @@
 #################################################################
 # SHELL SCRIPT DEPLOY AIRFLOW APP TO HEROKU MANUALLY
 #################################################################
+set -e
 heroku create airflow-heroku 
+echo 'add postgre and connect to airflow app...'
+heroku addons:create heroku-postgresql:dev -a airflow-heroku
 heroku config:set  -a airflow-heroku  AIRFLOW__CORE__SQL_ALCHEMY_CONN=$(heroku config -a airflow-heroku | grep DATABASE_URL | sed -e 's/ //g' | cut -d  ':' -f 2-)
 heroku config:set  -a airflow-heroku  AIRFLOW__CORE__LOAD_EXAMPLES=False
 f_key=$(python -c "from cryptography.fernet import Fernet; print (Fernet.generate_key())") && f_key_fix="${key##b}"
