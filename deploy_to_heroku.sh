@@ -4,6 +4,13 @@
 # SHELL SCRIPT DEPLOY AIRFLOW APP TO HEROKU MANUALLY
 #################################################################
 set -e
+
+# Install custom python package if requirements.txt is present
+if [ -e "requirements.txt" ]; then
+    $(which pip) install --user -r /requirements.txt
+fi
+
+# build heroku project 
 heroku create airflow-heroku 
 echo 'add postgre and connect to airflow app...'
 heroku addons:create heroku-postgresql:dev -a airflow-heroku
