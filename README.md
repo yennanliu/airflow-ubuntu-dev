@@ -17,13 +17,17 @@
 
 ### File structure 
 ```bash
-# ├── Procfile        : define the initial operations when Heroku app built and deployed 
-# ├── Procfile_dev
+# ├── Dockerfile          : file build docker image 
+# ├── Procfile            : define the initial operations when Heroku app built and deployed 
+# ├── Procfile_dev        : Procfile file for dev 
 # ├── README.md
-# ├── app.json         : define how to deploy to Heroku as app 
-# ├── dags             : Dags define how does airflow run process  
-# ├── init_env.sh      : init script for DB (maybe not necessary, need to check)
-# └── requirements.txt : install needed libraries for airflow 
+# ├── app.json            : define how to deploy to Heroku as app 
+# ├── config              : config file for airflow (airflow.cfg)
+# ├── dags                : code define Airflow jobs  
+# ├── deploy_to_heroku.sh : shell script deploy app to Heroku
+# ├── init_env.sh         : init script for DB (maybe not necessary, need to check)
+# ├── requirements.txt    : install needed libraries for airflow 
+# └── script              : scripts help the deployment
 ```
 
 ### Quick start 
