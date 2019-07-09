@@ -16,7 +16,7 @@ script:
 
 before_deploy:
   - echo ' ----------------- STEP 2) DOCKER PUSH ----------------- '
-  - docker commit $container_id yennanliu/airflow-heroku-env:V1 && docker push yennanliu/airflow-heroku-env:V1 
+  #- docker commit $container_id yennanliu/airflow-heroku-env:V1 && docker push yennanliu/airflow-heroku-env:V1 
 deploy:
   provider: heroku
   api_key:
