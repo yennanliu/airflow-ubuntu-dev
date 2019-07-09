@@ -15,6 +15,7 @@ script:
 before_deploy:
   - echo ' ----------------- STEP 2) DOCKER PUSH ----------------- '
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin && echo "docker login OK" || echo "docker login failed"
+  - container_id="` docker ps -a | awk 'FNR == 2 {print $1}'`" && echo container_id = $container_id && image_id="` docker ps -a | awk 'FNR == 2 {print $2}'`" && echo image_id = $image_id 
   - docker commit $container_id yennanliu/airflow-heroku-env:V1 && docker push yennanliu/airflow-heroku-env:V1 
 deploy:
   provider: heroku
