@@ -14,8 +14,8 @@ script:
 
 before_deploy:
   - echo ' ----------------- STEP 2) DOCKER PUSH ----------------- '
-  - echo '*** to be finished *** '
-
+  - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin && echo "docker login OK" || echo "docker login failed"
+  - docker commit $container_id yennanliu/airflow-heroku-env:V1 && docker push yennanliu/airflow-heroku-env:V1 
 deploy:
   provider: heroku
   api_key:
