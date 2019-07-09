@@ -87,6 +87,24 @@ $ git push heroku master
 $ heroku logs --tail -a airflow-heroku
 # access the deployed Heroku app if everything above works fine 
 $ heroku open 
+
+# set up airflow user account 
+$ heroku run bash
+$ python 
+# within in python console 
+>>> import airflow
+>>> from airflow import models, settings
+>>> from airflow.contrib.auth.backends.password_auth import PasswordUser
+>>> user = PasswordUser(models.User())
+>>> user.username = 'user'
+>>> user.email  = 'example@airflow.com'
+>>> user.password  = '123'
+>>> session = settings.Session()
+>>> session.add(user)
+>>> session.commit()
+>>> session.close()
+>>> exit()
+
 ```
 </details>
 

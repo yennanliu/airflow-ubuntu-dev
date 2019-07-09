@@ -23,3 +23,19 @@ echo 'Airflow Config Vars :\n' &&  heroku config -a airflow-heroku
 echo 'add heroku remote git...' && heroku git:remote -a airflow-heroku
 echo 'deploy...' && git push heroku master 
 echo 'deploy... please check the deploy log via command : heroku logs --tail \n' && echo 'deploy OK, please visit the app via http://airflow-heroku.herokuapp.com/ or via `heroku open` command '
+
+# Set up airflow user account
+# $ heroku run bash
+# $ python 
+# import airflow
+# from airflow import models, settings
+# from airflow.contrib.auth.backends.password_auth import PasswordUser
+# user = PasswordUser(models.User())
+# user.username = 'user'
+# user.email  = 'example@airflow.com'
+# user.password  = '123'
+# session = settings.Session()
+# session.add(user)
+# session.commit()
+# session.close()
+# exit()
