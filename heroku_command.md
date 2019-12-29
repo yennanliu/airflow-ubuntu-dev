@@ -1,15 +1,15 @@
 ## heroku_command.md
 
-### Check Heroku log 
+### 1) Check Heroku log 
 ```bash
-$ heroku log 
+$ heroku logs --tail
 ```
-### Connect to Heroku bash 
+### 2) Connect to Heroku bash 
 ```bash
-$ heroku console log
+$ heroku run bash
 ```
 
-### Connect to Heroku Postgre 
+### 3) Connect to Heroku Postgre 
 ```bash
 $ heroku pg:psql postgresql-aerodynamic-<xxx> --app airflow-heroku
 ```
