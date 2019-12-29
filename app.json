@@ -29,8 +29,7 @@
     }
   },
   "scripts": {
-    "postdeploy": "./init_env",
-    "afterdeploy": "python script/init_airflow_user.py"
+    "postdeploy": "./init_env && python script/init_airflow_user.py"
   },
   "addons": [
     "heroku-postgresql",
