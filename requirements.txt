@@ -43,7 +43,7 @@ numpy==1.16.4
 ordereddict==1.1
 pandas==0.24.2
 pendulum==1.4.4
-psutil==5.6.3
+psutil==5.6.6
 psycopg2==2.7.7
 pycparser==2.19
 Pygments==2.4.2
