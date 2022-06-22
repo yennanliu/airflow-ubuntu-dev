@@ -39,7 +39,7 @@ lxml==4.6.5
 Mako==1.0.12
 Markdown==2.6.11
 MarkupSafe==1.1.1
-numpy==1.21.0
+numpy==1.22.0
 ordereddict==1.1
 pandas==0.24.2
 pendulum==1.4.4
