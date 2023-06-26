@@ -16,6 +16,7 @@ def lambda_handler(event, context):
     # take the first relevant cluster
     cluster_id = clusters[0]
     CODE_DIR = "/home/hadoop/code/"
+    
     step =  {
             "Name": "Main spark-submit job",
             "ActionOnFailure": 'CONTINUE',
