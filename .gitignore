@@ -3,3 +3,4 @@ airflow/dags/__pycache__
 airflow/.DS_Store
 airflow/logs/
 airflow/dags/.DS_Store
+.DS_Store
