@@ -6,7 +6,7 @@ from airflow.operators.python_operator  import PythonOperator
 from datetime import datetime
 
 from test_script import *
-from my_client import call_api
+from my_client_test import call_api
 
 def print_return_val(**kwargs):
     task_instance = kwargs['task_instance']

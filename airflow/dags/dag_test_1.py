@@ -6,13 +6,16 @@ from airflow.operators.python_operator  import PythonOperator
 from datetime import datetime
 
 from test_script import *
-from my_client import call_api
+from my_client_test import call_api
 
 def print_return_val(**kwargs):
     #xcom_value = str(ti.xcom_pull(task_ids="run_task3"))
     task_instance = kwargs['task_instance']
     xcom_value = task_instance.xcom_pull(task_ids='run_task3') #{{ task_instance.xcom_pull(task_ids='run_task3', key='table_name') }}
     print (f"xcom_value = {xcom_value}")
+
+def ssh_connect():
+    pass
 
 with DAG(
     dag_id='dag_test_1',
@@ -44,13 +47,6 @@ with DAG(
         ,retries = 1
         ,dag = dag
     )
-
-    # call_api = PythonOperator(
-    #     task_id = 'call_api'
-    #     ,python_callable=call_api
-    #     ,retries = 1
-    #     ,dag = dag
-    # )   
 
     end_task = EmptyOperator(
         task_id='end'

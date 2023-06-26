@@ -2,11 +2,14 @@ from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.bash import BashOperator
 from airflow.operators.python_operator  import PythonOperator
+from airflow.contrib.operators.ssh_operator  import SSHOperator
 
 from datetime import datetime
 
 from test_script import *
-from my_client import call_api
+from my_client_test import call_api
+
+ssh_command="echo 123"
 
 def print_return_val(**kwargs):
     task_instance = kwargs['task_instance']
