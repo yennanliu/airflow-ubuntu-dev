@@ -4,3 +4,8 @@ airflow/.DS_Store
 airflow/logs/
 airflow/dags/.DS_Store
 .DS_Store
+
+
+# dev
+airflow/dags/my_spark_client.py
+airflow/dags/my_client.py
