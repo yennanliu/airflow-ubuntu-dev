@@ -1,0 +1,4 @@
+airflow/dags/__pycache__/*
+airflow/dags/__pycache__
+airflow/.DS_Store
+airflow/logs/
