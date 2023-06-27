@@ -8,6 +8,8 @@ from datetime import datetime
 from test_script import *
 from my_client_test import call_api
 
+from aws_requests_auth.aws_auth import AWSRequestsAuth
+
 def print_return_val(**kwargs):
     #xcom_value = str(ti.xcom_pull(task_ids="run_task3"))
     task_instance = kwargs['task_instance']

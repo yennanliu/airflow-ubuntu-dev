@@ -35,8 +35,20 @@ services:
       - .env
 
   scheduler:
-    <<: *common
-    <<: *depends-on
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully     
+    image: apache/airflow:2.3.0
+    user: "${AIRFLOW_UID}:0"
+    env_file: 
+      - .env
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - /var/run/docker.sock:/var/run/docker.sock
     container_name: airflow-scheduler
     command: scheduler
     restart: on-failure
@@ -44,13 +56,25 @@ services:
       - "8793:8793"
 
   webserver:
-    <<: *common
-    <<: *depends-on
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    image: apache/airflow:2.3.0
+    user: "${AIRFLOW_UID}:0"
+    env_file: 
+      - .env
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - /var/run/docker.sock:/var/run/docker.sock
     container_name: airflow-webserver
     restart: always
     command: webserver
     ports:
-      - "8080:8080"
+      - "80:8080"
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
       interval: 30s
@@ -58,7 +82,16 @@ services:
       retries: 5
   
   airflow-init:
-    <<: *common
+    image: apache/airflow:2.3.0
+    user: "${AIRFLOW_UID}:0"
+    env_file: 
+      - .env
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - /var/run/docker.sock:/var/run/docker.sock
+
     container_name: airflow-init
     entrypoint: /bin/bash
     command:
@@ -67,3 +100,6 @@ services:
         mkdir -p /sources/logs /sources/dags /sources/plugins
         chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
         exec /entrypoint airflow version
+      - |
+        COPY requirements.txt .
+        RUN pip install -r requirements.txt
