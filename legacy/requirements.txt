@@ -28,7 +28,7 @@ Flask-WTF==0.14.2
 funcsigs==1.0.0
 future==0.16.0
 gitdb2==2.0.5
-GitPython==2.1.11
+GitPython==3.1.30
 gunicorn==19.9.0
 idna==2.8
 iso8601==0.1.12
