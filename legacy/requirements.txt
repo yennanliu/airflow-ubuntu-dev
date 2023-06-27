@@ -14,7 +14,7 @@ croniter==0.3.30
 defusedxml==0.6.0
 dill==0.2.9
 docutils==0.14
-Flask==1.0.3
+Flask==2.2.5
 Flask-Admin==1.5.3
 Flask-AppBuilder==4.3.0
 Flask-Babel==0.12.2
