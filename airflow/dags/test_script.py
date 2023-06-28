@@ -5,6 +5,7 @@ def my_func1():
 
 def my_func2():
     print ("this is my_func2")
+    return 789
 
 def my_func3():
     #return "123"
@@ -16,3 +17,7 @@ def my_func4():
         return True
     else:
         raise Exception("NOT an even number")
+
+def my_func5(input):
+    print(f"input = {input}")
+    return input

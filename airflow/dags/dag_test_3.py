@@ -16,6 +16,11 @@ def print_return_val(**kwargs):
     xcom_value = task_instance.xcom_pull(task_ids='run_task3') #{{ task_instance.xcom_pull(task_ids='run_task3', key='table_name') }}
     print (f"xcom_value = {xcom_value}")
 
+def hello_world(ti, execution_date, **context):
+    print("Hello World")
+    return "Gorgeous"
+
+
 with DAG(
     dag_id='dag_test_3',
     start_date=datetime(2022, 5, 28),
@@ -26,17 +31,25 @@ with DAG(
         task_id='start'
     )
 
-    run_task3 = PythonOperator(
-        task_id = 'run_task_3'
-        ,python_callable=my_func3
-        ,retries = 1
-        ,dag = dag
+    my_func2 = PythonOperator(
+        task_id="my_func2",
+        python_callable=my_func2,
     )
 
-    run_task4 = PythonOperator(
-        task_id = 'run_task4'
+    # run_task3 = PythonOperator(
+    #     task_id = 'run_task_3'
+    #     ,python_callable=my_func3
+    #     ,retries = 1
+    #     ,dag = dag
+    # )
+
+    my_func5 = PythonOperator(
+        task_id = 'my_func5'
         #,python_callable=print_return_val
-        ,python_callable=my_func4
+        ,python_callable=my_func5
+        #,op_kwargs={"input": "xxx"}
+        #, op_kwargs={"input": "{{ ti.xcom_pull(task_ids='run_task3') }}"}
+        ,op_kwargs={"input": my_func2.output}
         ,retries = 1
         ,dag = dag
     )
@@ -45,6 +58,10 @@ with DAG(
         task_id='end'
     )
 
-start_task >> run_task3
-run_task3 >> run_task4
-run_task4 >> end_task
+# start_task >> run_task3
+# run_task3 >> my_func5
+# my_func5 >> end_task
+
+start_task >> my_func2
+my_func2 >> my_func5
+my_func5 >> end_task
