@@ -12,6 +12,7 @@ x-common:
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - /var/run/docker.sock:/var/run/docker.sock
+  command: pip install aws_requests_auth
 
 x-depends-on:
   &depends-on
@@ -50,7 +51,7 @@ services:
       - ./plugins:/opt/airflow/plugins
       - /var/run/docker.sock:/var/run/docker.sock
     container_name: airflow-scheduler
-    command: pip install aws_requests_auth && scheduler
+    command: scheduler
     restart: on-failure
     ports:
       - "8793:8793"
