@@ -50,7 +50,7 @@ services:
       - ./plugins:/opt/airflow/plugins
       - /var/run/docker.sock:/var/run/docker.sock
     container_name: airflow-scheduler
-    command: sudo pip install aws_requests_auth && scheduler
+    command: pip install aws_requests_auth && scheduler
     restart: on-failure
     ports:
       - "8793:8793"
