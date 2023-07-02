@@ -54,6 +54,10 @@ services:
     restart: on-failure
     ports:
       - "8793:8793"
+    command:
+      - -c
+      - |
+        sudo pip install aws_requests_auth
 
   webserver:
     depends_on:
@@ -99,4 +103,4 @@ services:
       - |
         mkdir -p /sources/logs /sources/dags /sources/plugins
         chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
-        exec /entrypoint airflow version && sudo pip install aws_requests_auth
+        exec /entrypoint airflow version
