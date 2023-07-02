@@ -1,6 +1,14 @@
 # README
 
 ## Commands
+
+```bash
+git clone https://github.com/yennanliu/airflow-heroku-dev.git
+cd airflow-heroku-dev
+cd airflow
+docker-compose up
+```
+
 ```bash
 docker exec -it --user airflow airflow-scheduler bash -c "airflow dags list"
 docker exec -it --user airflow airflow-scheduler bash -c "airflow dags list-import-errors"
