@@ -1,2 +1,2 @@
 # airflow-heroku-dev
-deploy airflow to heroku demo 
+deploy airflow to Heroku demo 
