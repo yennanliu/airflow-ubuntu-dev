@@ -12,8 +12,8 @@ x-common:
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - /var/run/docker.sock:/var/run/docker.sock
-  environment:
-    _PIP_ADDITIONAL_REQUIREMENTS: aws_requests_auth
+  # environment:
+  #   _PIP_ADDITIONAL_REQUIREMENTS: aws_requests_auth
 
 x-depends-on:
   &depends-on
@@ -99,6 +99,7 @@ services:
     command:
       - -c
       - |
+        sudo pip install aws_requests_auth
         mkdir -p /sources/logs /sources/dags /sources/plugins
         chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
         exec /entrypoint airflow version
