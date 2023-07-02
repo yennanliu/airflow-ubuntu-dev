@@ -99,7 +99,4 @@ services:
       - |
         mkdir -p /sources/logs /sources/dags /sources/plugins
         chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
-        exec /entrypoint airflow version
-      - |
-        COPY requirements.txt .
-        RUN pip install -r requirements.txt
+        exec /entrypoint airflow version && sudo pip install aws_requests_auth
