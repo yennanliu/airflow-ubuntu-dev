@@ -12,7 +12,8 @@ x-common:
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - /var/run/docker.sock:/var/run/docker.sock
-  command: pip install aws_requests_auth
+  environment:
+    _PIP_ADDITIONAL_REQUIREMENTS: aws_requests_auth
 
 x-depends-on:
   &depends-on
