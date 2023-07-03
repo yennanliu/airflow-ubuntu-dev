@@ -1,2 +1,2 @@
-# airflow-heroku-dev
-deploy airflow to Heroku demo 
+# airflow-Ubuntu-dev
+deploy airflow to Ubuntu with Docker compose 
